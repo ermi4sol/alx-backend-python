@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
 
-import asyncio
-async_comprehension = __import__('1-async_comprehension').async_comprehension
+from typing import List
 
-async def main():
-    """Test the async_comprehension function."""
-    print(await async_comprehension())
+async_generator = __import__('0-async_generator').async_generator
 
-asyncio.run(main())
+
+async def async_comprehension() -> List[float]:
+    """
+    Coroutine that collects 10 random numbers using an async comprehension
+    over async_generator, then returns the 10 random numbers.
+    """
+    return [number async for number in async_generator()]
